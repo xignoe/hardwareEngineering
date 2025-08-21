@@ -1,0 +1,168 @@
+/* CSS Reset and Base Styles */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  line-height: var(--line-height-relaxed);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: var(--font-family-base);
+  color: var(--color-text-primary);
+  background-color: var(--color-background);
+  /* Prevent horizontal scrolling on mobile */
+  overflow-x: hidden;
+  /* Improve touch scrolling on iOS */
+  -webkit-overflow-scrolling: touch;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+#root {
+  isolation: isolate;
+  min-height: 100vh;
+}
+
+/* Typography Scale */
+h1 {
+  font-size: var(--font-size-4xl);
+  line-height: var(--line-height-tight);
+  font-weight: 700;
+}
+
+h2 {
+  font-size: var(--font-size-3xl);
+  line-height: var(--line-height-tight);
+  font-weight: 600;
+}
+
+h3 {
+  font-size: var(--font-size-2xl);
+  line-height: var(--line-height-tight);
+  font-weight: 600;
+}
+
+h4 {
+  font-size: var(--font-size-xl);
+  line-height: var(--line-height-normal);
+  font-weight: 500;
+}
+
+h5 {
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-normal);
+  font-weight: 500;
+}
+
+h6 {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  font-weight: 500;
+}
+
+p {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
+}
+
+code {
+  font-family: var(--font-family-mono);
+  font-size: 0.9em;
+  background-color: var(--color-background-secondary);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-base);
+}
+
+/* Mobile-specific typography adjustments */
+@media (max-width: 480px) {
+  h1 {
+    font-size: var(--font-size-2xl);
+    line-height: var(--line-height-tight);
+  }
+
+  h2 {
+    font-size: var(--font-size-xl);
+    line-height: var(--line-height-tight);
+  }
+
+  h3 {
+    font-size: var(--font-size-lg);
+    line-height: var(--line-height-normal);
+  }
+
+  h4 {
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-normal);
+  }
+
+  h5, h6 {
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-normal);
+  }
+
+  p {
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-relaxed);
+  }
+  
+  code {
+    font-size: 0.8em;
+    padding: var(--space-1);
+    word-break: break-all;
+  }
+}
+
+/* Touch-friendly button and input styling */
+button, 
+input, 
+select, 
+textarea {
+  min-height: var(--touch-target-min);
+  border-radius: var(--radius-base);
+}
+
+/* Improve tap targets on mobile */
+@media (max-width: 768px) {
+  button, 
+  input, 
+  select, 
+  textarea,
+  a {
+    min-height: var(--touch-target-min);
+  }
+}

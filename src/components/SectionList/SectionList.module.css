@@ -1,0 +1,298 @@
+/* SectionList Component Styles */
+
+.sectionList {
+  display: grid;
+  gap: var(--space-6);
+  width: 100%;
+}
+
+/* Grid layout (default) */
+.sectionList.grid {
+  grid-template-columns: 1fr;
+}
+
+/* List layout */
+.sectionList.list {
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+}
+
+/* Responsive grid layout */
+@media (min-width: 768px) {
+  .sectionList.grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .sectionList.grid {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  }
+}
+
+/* Section Card Styles */
+.sectionCard {
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  position: relative;
+  overflow: hidden;
+}
+
+.sectionCard:hover {
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.sectionCard:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.sectionCard:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
+.sectionCard.active {
+  border-color: var(--color-primary);
+  background: var(--color-background-secondary);
+}
+
+.sectionCard.active::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--color-primary);
+}
+
+/* Card Header */
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.sectionTitle {
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 0;
+  line-height: var(--line-height-tight);
+  flex: 1;
+  min-width: 0; /* Allow text to truncate if needed */
+}
+
+.questionCount {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  background: var(--color-background-secondary);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-base);
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+.sectionCard.active .questionCount {
+  background: var(--color-background);
+  color: var(--color-primary);
+}
+
+/* Section Description */
+.sectionDescription {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
+  margin: 0;
+  flex: 1;
+}
+
+/* Card Footer */
+.cardFooter {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: auto;
+}
+
+.studyPrompt {
+  font-size: var(--font-size-sm);
+  color: var(--color-primary);
+  font-weight: 500;
+  opacity: 0.8;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.sectionCard:hover .studyPrompt {
+  opacity: 1;
+}
+
+/* Empty State */
+.emptyState {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--space-16) var(--space-8);
+  text-align: center;
+}
+
+.emptyMessage {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-lg);
+  margin: 0;
+}
+
+/* Touch-friendly interactions */
+.sectionCard {
+  min-height: var(--touch-target-min);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.sectionCard:active {
+  transform: translateY(1px);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Enhanced mobile responsiveness */
+@media (max-width: 480px) {
+  .sectionList {
+    gap: var(--space-4);
+    padding: 0 var(--space-2);
+  }
+  
+  .sectionCard {
+    padding: var(--space-4);
+    gap: var(--space-3);
+    border-radius: var(--radius-md);
+  }
+  
+  .cardHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+  }
+  
+  .sectionTitle {
+    font-size: var(--font-size-base);
+    font-weight: 700;
+    line-height: var(--line-height-tight);
+  }
+  
+  .questionCount {
+    align-self: flex-start;
+    font-size: var(--font-size-xs);
+    padding: var(--space-1) var(--space-2);
+  }
+  
+  .sectionDescription {
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-normal);
+  }
+  
+  .studyPrompt {
+    font-size: var(--font-size-xs);
+    text-align: center;
+    margin-top: var(--space-2);
+  }
+  
+  .emptyState {
+    padding: var(--space-8) var(--space-4);
+  }
+  
+  .emptyMessage {
+    font-size: var(--font-size-base);
+  }
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+  .sectionCard {
+    padding: var(--space-5);
+  }
+  
+  .cardHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+  }
+  
+  .sectionTitle {
+    font-size: var(--font-size-lg);
+  }
+  
+  .questionCount {
+    align-self: flex-start;
+  }
+}
+
+/* Tablet optimizations */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .sectionList.grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-5);
+  }
+  
+  .sectionCard {
+    padding: var(--space-5);
+  }
+  
+  .sectionTitle {
+    font-size: var(--font-size-lg);
+  }
+}
+
+/* Desktop optimizations */
+@media (min-width: 1024px) {
+  .sectionList.grid {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: var(--space-6);
+  }
+  
+  .sectionCard:hover {
+    transform: translateY(-3px);
+  }
+  
+  .sectionCard:active {
+    transform: translateY(-1px);
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .sectionCard {
+    border-width: 2px;
+  }
+  
+  .sectionCard:hover,
+  .sectionCard.active {
+    border-width: 3px;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .sectionCard {
+    transition: none;
+  }
+  
+  .sectionCard:hover {
+    transform: none;
+  }
+  
+  .studyPrompt {
+    transition: none;
+  }
+}

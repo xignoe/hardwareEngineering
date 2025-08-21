@@ -1,0 +1,383 @@
+/* Navigation Component Styles */
+
+.navigation {
+  background: var(--color-background);
+  border-bottom: 1px solid var(--color-border);
+  padding: var(--spacing-md) 0;
+  margin-bottom: var(--spacing-lg);
+}
+
+/* Breadcrumb Navigation */
+.breadcrumb {
+  margin-bottom: var(--spacing-md);
+}
+
+.breadcrumbList {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+}
+
+.breadcrumbItem {
+  display: flex;
+  align-items: center;
+}
+
+.breadcrumbLink {
+  background: none;
+  border: none;
+  color: var(--color-primary);
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius-sm);
+  transition: background-color 0.2s ease, color 0.2s ease;
+  text-decoration: none;
+}
+
+.breadcrumbLink:hover {
+  background-color: var(--color-primary-light);
+  color: var(--color-primary-dark);
+}
+
+.breadcrumbLink:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.breadcrumbSeparator {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  margin: 0 var(--spacing-xs);
+}
+
+.breadcrumbCurrent {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  padding: var(--spacing-xs) var(--spacing-sm);
+}
+
+/* Section Selector */
+.sectionSelector {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+  flex-wrap: wrap;
+}
+
+.selectorLabel {
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--color-text-primary);
+  white-space: nowrap;
+}
+
+.selectorDropdown {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-sm);
+  background: var(--color-background);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  min-width: 200px;
+}
+
+.selectorDropdown:hover {
+  border-color: var(--color-primary);
+}
+
+.selectorDropdown:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px var(--color-primary-light);
+}
+
+/* Question Navigation */
+.questionNavigation {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.navigationControls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+}
+
+.navButton {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-sm);
+  background: var(--color-background);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 100px;
+}
+
+.navButton:hover:not(:disabled) {
+  background: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
+}
+
+.navButton:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px var(--color-primary-light);
+}
+
+.navButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: var(--color-background-secondary);
+  color: var(--color-text-secondary);
+}
+
+.navButtonIcon {
+  font-size: var(--font-size-md);
+  line-height: 1;
+}
+
+.navButtonPrev {
+  justify-content: flex-start;
+}
+
+.navButtonNext {
+  justify-content: flex-end;
+}
+
+/* Question Progress */
+.questionProgress {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-xs);
+  flex: 1;
+  min-width: 200px;
+}
+
+.progressText {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  font-weight: 500;
+}
+
+.progressBar {
+  width: 100%;
+  height: 4px;
+  background: var(--color-background-secondary);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: var(--color-primary);
+  transition: width 0.3s ease;
+  border-radius: 2px;
+}
+
+/* Question Selector */
+.questionSelector {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Touch-friendly interactions */
+.breadcrumbLink,
+.navButton,
+.selectorDropdown {
+  min-height: var(--touch-target-min);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.breadcrumbLink {
+  padding: var(--spacing-sm) var(--spacing-md);
+}
+
+.navButton {
+  padding: var(--spacing-md) var(--spacing-lg);
+  font-size: var(--font-size-base);
+}
+
+/* Enhanced mobile responsiveness */
+@media (max-width: 480px) {
+  .navigation {
+    padding: var(--spacing-xs) 0;
+    margin-bottom: var(--spacing-md);
+  }
+  
+  .breadcrumb {
+    margin-bottom: var(--spacing-sm);
+  }
+  
+  .breadcrumbList {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-xs);
+    font-size: var(--font-size-xs);
+  }
+  
+  .breadcrumbSeparator {
+    display: none;
+  }
+  
+  .breadcrumbItem {
+    width: 100%;
+  }
+  
+  .breadcrumbLink,
+  .breadcrumbCurrent {
+    width: 100%;
+    text-align: left;
+    justify-content: flex-start;
+    padding: var(--spacing-xs) var(--spacing-sm);
+  }
+  
+  .sectionSelector {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--spacing-xs);
+    margin-bottom: var(--spacing-sm);
+  }
+  
+  .selectorLabel {
+    font-size: var(--font-size-xs);
+    margin-bottom: var(--spacing-xs);
+  }
+  
+  .selectorDropdown {
+    min-width: auto;
+    width: 100%;
+    padding: var(--spacing-sm);
+    font-size: var(--font-size-sm);
+  }
+  
+  .questionNavigation {
+    gap: var(--spacing-sm);
+  }
+  
+  .navigationControls {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+  
+  .navButton {
+    width: 100%;
+    justify-content: center;
+    padding: var(--spacing-md);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+  }
+  
+  .questionProgress {
+    order: -1;
+    width: 100%;
+    margin-bottom: var(--spacing-sm);
+  }
+  
+  .progressText {
+    font-size: var(--font-size-xs);
+  }
+  
+  .questionSelector {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--spacing-xs);
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .navigation {
+    padding: var(--spacing-sm) 0;
+  }
+  
+  .breadcrumbList {
+    font-size: var(--font-size-sm);
+  }
+  
+  .navigationControls {
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+  
+  .navButton {
+    width: 100%;
+    justify-content: center;
+    padding: var(--spacing-sm) var(--spacing-lg);
+  }
+  
+  .questionProgress {
+    order: -1;
+    width: 100%;
+  }
+  
+  .sectionSelector,
+  .questionSelector {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--spacing-sm);
+  }
+  
+  .selectorDropdown {
+    min-width: auto;
+    width: 100%;
+  }
+}
+
+/* Tablet optimizations */
+@media (min-width: 769px) and (max-width: 1023px) {
+  .navigationControls {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spacing-md);
+  }
+  
+  .navButton {
+    min-width: 140px;
+  }
+  
+  .questionProgress {
+    flex-basis: 100%;
+    order: -1;
+  }
+}
+
+/* Desktop optimizations */
+@media (min-width: 1024px) {
+  .navigation {
+    padding: var(--spacing-lg) 0;
+  }
+  
+  .navigationControls {
+    gap: var(--spacing-lg);
+  }
+  
+  .navButton {
+    min-width: 120px;
+    padding: var(--spacing-sm) var(--spacing-xl);
+  }
+}

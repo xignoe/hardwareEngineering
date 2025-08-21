@@ -1,0 +1,122 @@
+/* Layout Component Styles */
+
+.layout {
+  min-height: 100vh;
+  background-color: var(--color-background);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Skip to main content link for accessibility */
+.skipLink {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: var(--color-primary);
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 600;
+  z-index: 1000;
+  transition: top 0.3s;
+}
+
+.skipLink:focus {
+  top: 6px;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1;
+  padding: var(--space-6) 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.main:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 4px;
+}
+
+/* Mobile-first responsive design */
+
+/* Extra small mobile - < 480px */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 var(--space-3);
+  }
+  
+  .main {
+    padding: var(--space-3) 0;
+  }
+}
+
+/* Small mobile - 480px to 767px */
+@media (min-width: 481px) and (max-width: 767px) {
+  .container {
+    padding: 0 var(--space-4);
+  }
+  
+  .main {
+    padding: var(--space-4) 0;
+  }
+}
+
+/* Tablet - 768px to 1023px */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .container {
+    padding: 0 var(--space-6);
+  }
+  
+  .main {
+    padding: var(--space-6) 0;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+}
+
+/* Desktop - 1024px and up */
+@media (min-width: 1024px) {
+  .container {
+    padding: 0 var(--space-8);
+  }
+  
+  .main {
+    padding: var(--space-12) 0;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+}
+
+/* Large desktop - 1280px and up */
+@media (min-width: 1280px) {
+  .container {
+    padding: 0 var(--space-10);
+  }
+  
+  .main {
+    max-width: 900px;
+    padding: var(--space-16) 0;
+  }
+}
+
+/* Extra large desktop - 1536px and up */
+@media (min-width: 1536px) {
+  .container {
+    padding: 0 var(--space-12);
+  }
+  
+  .main {
+    max-width: 1000px;
+  }
+}

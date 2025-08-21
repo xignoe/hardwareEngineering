@@ -1,0 +1,182 @@
+/* Utility Classes */
+
+/* Layout Utilities */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.gap-2 {
+  gap: var(--space-2);
+}
+
+.gap-4 {
+  gap: var(--space-4);
+}
+
+.gap-6 {
+  gap: var(--space-6);
+}
+
+/* Spacing Utilities */
+.mt-4 {
+  margin-top: var(--space-4);
+}
+
+.mb-4 {
+  margin-bottom: var(--space-4);
+}
+
+.p-4 {
+  padding: var(--space-4);
+}
+
+.px-4 {
+  padding-left: var(--space-4);
+  padding-right: var(--space-4);
+}
+
+.py-4 {
+  padding-top: var(--space-4);
+  padding-bottom: var(--space-4);
+}
+
+/* Text Utilities */
+.text-center {
+  text-align: center;
+}
+
+.text-secondary {
+  color: var(--color-text-secondary);
+}
+
+/* Border Utilities */
+.border {
+  border: 1px solid var(--color-border);
+}
+
+.border-radius {
+  border-radius: var(--radius-base);
+}
+
+/* Shadow Utilities */
+.shadow {
+  box-shadow: var(--shadow-base);
+}
+
+.shadow-md {
+  box-shadow: var(--shadow-md);
+}
+
+/* Touch-friendly utilities */
+.touch-target {
+  min-height: var(--touch-target-min);
+  min-width: var(--touch-target-min);
+}
+
+.touch-spacing {
+  margin: var(--touch-spacing);
+}
+
+/* Mobile-first responsive utilities */
+.mobile-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.mobile-full-width {
+  width: 100%;
+}
+
+.mobile-center {
+  text-align: center;
+}
+
+.mobile-hidden {
+  display: none;
+}
+
+/* Responsive Utilities */
+@media (min-width: 480px) {
+  .xs\:block {
+    display: block;
+  }
+  
+  .xs\:flex {
+    display: flex;
+  }
+  
+  .xs\:text-left {
+    text-align: left;
+  }
+}
+
+@media (min-width: 768px) {
+  .md\:flex-row {
+    flex-direction: row;
+  }
+  
+  .md\:gap-8 {
+    gap: var(--space-8);
+  }
+  
+  .md\:block {
+    display: block;
+  }
+  
+  .md\:hidden {
+    display: none;
+  }
+  
+  .mobile-stack {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .mobile-full-width {
+    width: auto;
+  }
+  
+  .mobile-center {
+    text-align: left;
+  }
+  
+  .mobile-hidden {
+    display: block;
+  }
+}
+
+@media (min-width: 1024px) {
+  .lg\:px-8 {
+    padding-left: var(--space-8);
+    padding-right: var(--space-8);
+  }
+  
+  .lg\:gap-12 {
+    gap: var(--space-12);
+  }
+}
