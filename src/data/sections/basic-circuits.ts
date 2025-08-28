@@ -191,6 +191,124 @@ The power represents the rate of energy conversion from electrical to other form
     section: 'basic-circuits',
     tags: ['power', 'watts', 'energy', 'ohms-law', 'calculations'],
     difficulty: 'basic'
+  },
+  {
+    id: 'bc-007',
+    question: 'Why is power loss often due to current, not voltage?',
+    answer: `Power loss is often dominated by current because of the I²R term in the power equations.
+
+Key points:
+- Quadratic with current: P = I²R grows with the square of current; doubling I makes losses ~4×.
+- Resistance is fixed: For a given path or part value, higher I means higher I²R loss and more heat.
+- Joule heating: Electrical losses convert to heat proportional to I²R and time.
+- Transmission example: For the same delivered power (P = V × I), raising V lets you lower I, slashing I²R line losses.
+
+Implication: Designs strive to minimize current for efficiency and thermal reasons (use higher voltage where practical).`,
+    section: 'basic-circuits',
+    tags: ['power-loss', 'i2r', 'efficiency', 'thermal'],
+    difficulty: 'basic'
+  },
+  {
+    id: 'bc-008',
+    question: 'Draw a voltage divider circuit. What is the voltage divider equation? Derive it.',
+    answer: `A voltage divider turns a higher voltage into a lower proportional voltage using two series resistors.
+
+Circuit (text drawing):
+Vin ── R1 ──●── R2 ── GND
+            │
+          Vout
+
+Derivation:
+1) Series current: I = Vin / (R1 + R2)
+2) Output is across R2: Vout = I × R2
+3) Substitute I: Vout = Vin × (R2 / (R1 + R2))
+
+Notes:
+- The ratio depends only on R1 and R2.
+- Assumes Vout is measured by a high-impedance load (negligible loading).`,
+    section: 'basic-circuits',
+    tags: ['voltage-divider', 'kvl', 'resistors', 'derivation'],
+    difficulty: 'basic'
+  },
+  {
+    id: 'bc-009',
+    question: 'Basic RLC circuit analysis.',
+    answer: `An RLC circuit uses a Resistor (R), Inductor (L), and Capacitor (C). In AC analysis we use impedances:
+
+Impedances:
+- Resistor: Z_R = R
+- Inductor: Z_L = jωL
+- Capacitor: Z_C = 1/(jωC)
+
+Series RLC: Z_total = R + jωL + 1/(jωC)
+Parallel RLC: 1/Z_total = 1/R + 1/(jωL) + jωC
+
+Resonance:
+- f0 = 1/(2π√(LC))
+- Series: minimum impedance (max current)
+- Parallel: maximum impedance (min current)
+
+Applications: filters, oscillators, and tuning networks.`,
+    section: 'basic-circuits',
+    tags: ['rlc', 'impedance', 'resonance', 'ac'],
+    difficulty: 'intermediate'
+  },
+  {
+    id: 'bc-010',
+    question: 'Basic LPF/BPF/HPF filter analysis.',
+    answer: `First‑order RC filters:
+
+Low‑Pass (LPF):
+- Passes low frequencies, attenuates high.
+- Cutoff: f_c = 1/(2πRC)
+
+High‑Pass (HPF):
+- Passes high frequencies, attenuates low.
+- Cutoff: f_c = 1/(2πRC)
+
+Band‑Pass (BPF):
+- Passes a band between f_low and f_high.
+- Center frequency (RLC example): f0 = 1/(2π√(LC))
+- Quality factor: Q = f0/(f_high − f_low)
+
+Magnitude rolls ~20 dB/decade per pole; phase shift varies with frequency.`,
+    section: 'basic-circuits',
+    tags: ['filters', 'lpf', 'hpf', 'bpf'],
+    difficulty: 'intermediate'
+  },
+  {
+    id: 'bc-011',
+    question: "Passive components' parasitics.",
+    answer: `Real components are non‑ideal and include parasitics that affect high‑frequency behavior.
+
+Examples:
+- Resistors: lead inductance (nH), stray capacitance (pF)
+- Capacitors: ESR (series resistance), ESL (series inductance), leakage
+- Inductors: DCR (winding resistance), interwinding capacitance, core losses
+
+Effects: change impedance and phase vs frequency, introduce self‑resonances, and impact stability.
+Mitigation: choose appropriate packages/materials, minimize loop areas and trace lengths, place wisely.`,
+    section: 'basic-circuits',
+    tags: ['parasitics', 'non-ideal', 'layout', 'hf'],
+    difficulty: 'intermediate'
+  },
+  {
+    id: 'bc-012',
+    question: 'Basic op‑amp circuit analysis.',
+    answer: `Op‑amp golden rules with negative feedback: V+ ≈ V− and input currents ≈ 0.
+
+Inverting amplifier:
+- Gain: A_v = −Rf/Rin
+- Input via Rin to inverting node; non‑inverting at ground
+
+Non‑inverting amplifier:
+- Gain: A_v = 1 + Rf/Rg
+- Input at non‑inverting; divider from output to inverting
+
+Procedure: identify configuration, write KCL at the inverting node, apply golden rules, solve for Vout.`,
+    section: 'basic-circuits',
+    tags: ['op-amp', 'inverting', 'non-inverting', 'analysis'],
+    difficulty: 'basic'
   }
 ];
 

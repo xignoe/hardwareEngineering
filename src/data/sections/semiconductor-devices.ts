@@ -9,6 +9,15 @@ import type { Question, Section } from '../../types';
 export const semiconductorDevicesQuestions: Question[] = [
   // Device Physics Fundamentals
   {
+    id: 'sd-000',
+    question: 'What is the difference between P-type semiconductors vs N-type semiconductors?',
+    answer: `P‑type: majority carriers are holes (minority are electrons).
+N‑type: majority carriers are electrons (minority are holes).`,
+    section: 'semiconductor-devices',
+    tags: ['p-type', 'n-type', 'majority-carriers'],
+    difficulty: 'basic'
+  },
+  {
     id: 'sd-001',
     question: 'What is a semiconductor? How does it differ from conductors and insulators?',
     answer: `A semiconductor is a material whose electrical conductivity lies between that of conductors and insulators, and can be controlled by external factors.

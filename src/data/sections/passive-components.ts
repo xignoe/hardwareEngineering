@@ -9,6 +9,22 @@ import type { Question, Section } from '../../types';
 export const passiveComponentsQuestions: Question[] = [
   // Resistors
   {
+    id: 'pc-000',
+    question: 'Draw the symbol for a resistor.',
+    answer: `Common resistor symbols:
+
+American (zig‑zag):
+  ──╱╲╱╲╱╲──
+
+IEC (rectangle):
+  ──[ R ]──
+
+Either symbol indicates a resistive element between two nodes.`,
+    section: 'passive-components',
+    tags: ['resistor', 'symbol', 'schematic'],
+    difficulty: 'basic'
+  },
+  {
     id: 'pc-001',
     question: 'What is resistance?',
     answer: `Resistance is the electrical property of a material that opposes the flow of electric current.
@@ -190,7 +206,65 @@ For a 3.3V system with 10pF load capacitance:
     tags: ['pullup', 'pulldown', 'digital-logic', 'power-consumption', 'timing'],
     difficulty: 'intermediate'
   },
+  {
+    id: 'pc-014',
+    question: 'What are some common resistor values?',
+    answer: `Standard E‑series values are used so parts are easy to source.
+
+E12 (10%): 1.0, 1.2, 1.5, 1.8, 2.2, 2.7, 3.3, 3.9, 4.7, 5.6, 6.8, 8.2
+E24 (5%): adds mid‑points (e.g., 1.1, 1.3, 1.6, 2.0, 2.4, 3.0, 3.6, 4.3, 5.1, 6.2, 7.5, 9.1)
+E96 (1%): finer granularity for precision designs
+
+Typical decades: Ω, kΩ, MΩ. Choose value/tolerance by accuracy, noise, and availability.`,
+    section: 'passive-components',
+    tags: ['resistor', 'values', 'e12', 'e24', 'e96'],
+    difficulty: 'basic'
+  },
+  {
+    id: 'pc-015',
+    question: 'What are some common resistor packages and sizes?',
+    answer: `Surface‑mount (SMD) imperial sizes: 0201, 0402, 0603, 0805, 1206, 1210, 2010, 2512.
+Through‑hole axial: 1/8W, 1/4W, 1/2W, 1W, 2W, 5W (body sizes scale with wattage).
+
+Notes:
+- Smaller SMD → lower parasitic L, but harder to hand‑solder
+- Higher wattage → larger body, better thermal dissipation
+- Pick package based on assembly, power, and frequency needs`,
+    section: 'passive-components',
+    tags: ['resistor', 'package', 'smd', 'through-hole'],
+    difficulty: 'basic'
+  },
+  {
+    id: 'pc-016',
+    question: 'What are some common failure modes of a resistor?',
+    answer: `Typical failures:
+- Open circuit (most common) from thermal or mechanical stress
+- Resistance drift (aging, temperature cycling, moisture)
+- Short/low resistance (contamination, damage)
+- Increased noise (cracks, poor contacts)
+
+Mitigate via derating (power/voltage), proper package selection, environmental protection, and quality sourcing.`,
+    section: 'passive-components',
+    tags: ['resistor', 'failure', 'reliability', 'derating'],
+    difficulty: 'basic'
+  },
   // Capacitors
+  {
+    id: 'pc-017',
+    question: 'Draw the symbol for a capacitor.',
+    answer: `Common capacitor symbols:
+
+Non‑polarized (IEC):
+  ──| |──
+
+Polarized (electrolytic):
+  ──| |+──   (plus indicates positive terminal)
+
+Variable/trimmer variants add an arrow/adjustment mark.`,
+    section: 'passive-components',
+    tags: ['capacitor', 'symbol', 'schematic'],
+    difficulty: 'basic'
+  },
   {
     id: 'pc-005',
     question: 'What is capacitance?',
@@ -310,6 +384,22 @@ Where:
     section: 'passive-components',
     tags: ['dielectric', 'polarization', 'permittivity', 'breakdown-voltage', 'materials'],
     difficulty: 'intermediate'
+  },
+  {
+    id: 'pc-018',
+    question: 'What is the differential equation for a capacitor?',
+    answer: `Ideal capacitor voltage–current relationships:
+
+Time domain (differential/integral):
+- Current from voltage: i(t) = C · dv(t)/dt
+- Voltage from current: v(t) = (1/C) · ∫ i(t) dt + v(t₀)
+
+Key implications:
+- Capacitor voltage cannot change instantaneously (requires infinite current)
+- Step current produces ramp voltage; step voltage produces impulse current`,
+    section: 'passive-components',
+    tags: ['capacitor', 'differential-equation', 'time-domain', 'iv-relation'],
+    difficulty: 'basic'
   },
   {
     id: 'pc-007',
@@ -498,6 +588,126 @@ For sinusoidal signals, this derivative relationship introduces a 90° phase lea
     section: 'passive-components',
     tags: ['capacitor-transient', 'charging', 'steady-state', 'time-constant', 'rc-circuit'],
     difficulty: 'intermediate'
+  },
+  {
+    id: 'pc-019',
+    question: 'What is impedance at DC vs very high frequency for capacitors vs inductors?',
+    answer: `Capacitor (Z_C = 1/(jωC)):
+- DC (ω → 0): |Z_C| → ∞ (open circuit)
+- Very high f (ω → ∞): |Z_C| → 0 (short circuit)
+
+Inductor (Z_L = jωL):
+- DC (ω → 0): |Z_L| → 0 (short circuit)
+- Very high f (ω → ∞): |Z_L| → ∞ (open circuit)
+
+Magnitude behavior only; phase is ±90° (− for C, + for L).`,
+    section: 'passive-components',
+    tags: ['impedance', 'frequency', 'capacitor', 'inductor'],
+    difficulty: 'basic'
+  },
+  {
+    id: 'pc-020',
+    question: 'Draw a realistic circuit model for a capacitor. What are the parasitics and where do they come from?',
+    answer: `Real capacitor model includes ESL and ESR with the nominal C:
+
+Simple model: series ESL – ESR – C
+
+Parasitics:
+- ESR (equivalent series resistance): plate resistance, dielectric loss; causes heating and loss
+- ESL (equivalent series inductance): leads/internal structure; limits high‑frequency performance
+- Stray capacitances/coupling to nearby conductors from layout
+
+Effects:
+- Self‑resonance where |X_L| = |X_C|; above it, device behaves inductively
+- Increases impedance ripple, affects filtering and transient response
+
+Mitigation: choose low‑ESR/ESL parts, minimize lead/loop length, appropriate packages (e.g., 0402), thoughtful placement.`,
+    section: 'passive-components',
+    tags: ['capacitor', 'esr', 'esl', 'parasitics', 'self-resonance'],
+    difficulty: 'intermediate'
+  },
+  {
+    id: 'pc-021',
+    question: "What is a capacitor's self resonant frequency?",
+    answer: `Self‑resonant frequency (SRF) is where a capacitor’s ESL and C resonate:
+
+Condition: XL = XC ⇒ 2πf · L = 1/(2πf · C)
+Solve: f₀ = 1/(2π√(LC))
+
+At SRF:
+- Impedance is minimum and mostly resistive (≈ ESR)
+Below SRF: capacitive behavior; above SRF: inductive behavior.
+
+Smaller packages (lower ESL) and lower C raise SRF.`,
+    section: 'passive-components',
+    tags: ['srf', 'self-resonance', 'impedance', 'frequency'],
+    difficulty: 'intermediate'
+  },
+  {
+    id: 'pc-022',
+    question: 'What is a bypass/decoupling capacitor? What about a bulk capacitor? What is the difference?',
+    answer: `Bypass/decoupling: small value (nF–μF) placed close to IC pins to shunt high‑frequency noise and provide instantaneous current (local reservoir). High SRF, low ESR/ESL.
+
+Bulk: larger value (μF–mF) at rail entry/sections to smooth low‑frequency ripple/transients and support load steps. Lower SRF acceptable; focus on energy storage.
+
+Difference: frequency range and role—bypass targets HF noise near devices; bulk targets LF stability of supply rails. Both are complementary.`,
+    section: 'passive-components',
+    tags: ['bypass', 'decoupling', 'bulk', 'power'],
+    difficulty: 'basic'
+  },
+  {
+    id: 'pc-023',
+    question: 'What is an AC coupling capacitor?',
+    answer: `Series capacitor that passes AC content while blocking DC bias between stages.
+
+Choice: select C so the high‑pass cutoff f_c = 1/(2πRC_total) is below the lowest signal frequency, where R_total is the seen series/parallel resistance at that node.`,
+    section: 'passive-components',
+    tags: ['ac-coupling', 'high-pass', 'signal-conditioning'],
+    difficulty: 'basic'
+  },
+  {
+    id: 'pc-024',
+    question: 'What sort of signals can capacitors pass through and block? What sort of filter behavior is this?',
+    answer: `Capacitors pass high‑frequency (low impedance) and block low‑frequency/DC (high impedance), so they exhibit high‑pass behavior in series paths and low‑pass behavior to ground.`,
+    section: 'passive-components',
+    tags: ['capacitor', 'filter', 'high-pass', 'low-pass'],
+    difficulty: 'basic'
+  },
+  {
+    id: 'pc-025',
+    question: 'Build a LPF/HPF using a single capacitor.',
+    answer: `First‑order RC:
+
+Low‑Pass (to ground): input ─ R ─●─ output, node to ground via C
+Cutoff: f_c = 1/(2πRC)
+
+High‑Pass (series): input ─ C ─●─ output, node to ground via R
+Cutoff: f_c = 1/(2πRC)
+
+Choose R and C to place f_c appropriately.`,
+    section: 'passive-components',
+    tags: ['rc', 'lpf', 'hpf', 'first-order'],
+    difficulty: 'basic'
+  },
+  {
+    id: 'pc-026',
+    question: 'What are some common failure modes of a capacitor?',
+    answer: `Common failures: electrical leakage (dielectric degradation), dielectric breakdown (overvoltage short), ESR increase (aging), electrolyte dry‑out (electrolytics), and physical damage (bulging/cracking from heat or stress).
+
+Drivers: excessive voltage, temperature, ripple current, mechanical stress, poor manufacturing.
+
+Mitigation: derating, thermal design, appropriate chemistry/package, quality parts.`,
+    section: 'passive-components',
+    tags: ['capacitor', 'failure', 'reliability', 'esr'],
+    difficulty: 'basic'
+  },
+  {
+    id: 'pc-027',
+    question: 'What is the continuity condition? What do capacitors resist change to?',
+    answer: `Capacitor voltage cannot change instantaneously; i(t) = C · dv/dt. Therefore capacitors resist sudden changes in voltage, smoothing spikes and droops.`,
+    section: 'passive-components',
+    tags: ['capacitor', 'continuity', 'voltage'],
+    difficulty: 'basic'
   },
   // Inductors
   {
@@ -774,6 +984,155 @@ The continuity condition ensures energy conservation - the magnetic energy store
     section: 'passive-components',
     tags: ['inductor-continuity', 'current-continuity', 'back-emf', 'energy-storage', 'switching'],
     difficulty: 'intermediate'
+  }
+  ,
+  // Inductors – additional questions
+  {
+    id: 'pc-028',
+    question: 'Draw the symbol for an inductor.',
+    answer: `Common inductor symbols:
+
+Air‑core (zig‑zag/loops):
+  ──((((────
+
+Core indicated with parallel bars or a rectangle beneath the coil for iron/ferrite cores.`,
+    section: 'passive-components',
+    tags: ['inductor', 'symbol', 'schematic'],
+    difficulty: 'basic'
+  },
+  {
+    id: 'pc-029',
+    question: 'What is the differential equation for an inductor?',
+    answer: `Ideal inductor voltage–current relationship:
+
+Time domain:
+- Voltage from current: v(t) = L · di(t)/dt
+- Current from voltage: i(t) = (1/L) · ∫ v(t) dt + i(t₀)
+
+Implications:
+- Inductor current cannot change instantaneously (requires infinite voltage)
+- Step voltage produces ramp current; step current requires impulse voltage
+
+Growing/decaying current in RL:
+- Growth (step voltage V): i(t) = (V/R)(1 − e^{−t/τ}), τ = L/R
+- Decay (remove source): i(t) = I₀ · e^{−t/τ}`,
+    section: 'passive-components',
+    tags: ['inductor', 'differential-equation', 'time-domain', 'rl'],
+    difficulty: 'basic'
+  },
+  {
+    id: 'pc-030',
+    question: 'How does an inductor behave when initially excited and at DC steady-state?',
+    answer: `At initial excitation (DC step), an inductor opposes change in current; current ramps with time constant τ = L/R. At DC steady‑state, di/dt = 0, so v_L = 0 and the inductor behaves like a short (limited only by DCR).`,
+    section: 'passive-components',
+    tags: ['inductor', 'transient', 'steady-state'],
+    difficulty: 'basic'
+  },
+  {
+    id: 'pc-031',
+    question: "What is an inductor's impedance at DC vs infinitely high frequency?",
+    answer: `Z_L = jωL →
+- DC (ω → 0): |Z_L| → 0 (short circuit)
+- Infinitely high frequency (ω → ∞): |Z_L| → ∞ (open circuit)
+
+Opposite trend to capacitors.`,
+    section: 'passive-components',
+    tags: ['inductor', 'impedance', 'frequency'],
+    difficulty: 'basic'
+  },
+  {
+    id: 'pc-032',
+    question: 'What happens when an inductor saturates?',
+    answer: `Core saturation reduces effective inductance drastically. Effects:
+- Higher ripple current and poorer filtering (L ↓ ⇒ di/dt ↑ for same V)
+- Efficiency loss and heating (higher RMS current)
+- Behavior becomes more resistive; possible instability
+
+Avoid by derating current, selecting proper core/material, adding air gap (for chokes), and managing temperature.`,
+    section: 'passive-components',
+    tags: ['inductor', 'saturation', 'core', 'efficiency'],
+    difficulty: 'intermediate'
+  },
+  {
+    id: 'pc-033',
+    question: 'Draw a realistic circuit model for an inductor. What are the parasitics and where do they come from?',
+    answer: `Real inductor model adds series resistance (DCR) and parallel capacitance (C_par):
+
+Model: series L with DCR, in parallel with C_par (from inter‑turn capacitance). Core loss can be modeled as a parallel or series resistance.
+
+Origins:
+- DCR: copper resistance of windings
+- C_par: capacitance between turns/layers and to core/shield
+- Core losses: hysteresis and eddy currents in magnetic material
+
+Impact: self‑resonance, HF roll‑off, heating; careful layout and core choice mitigate.`,
+    section: 'passive-components',
+    tags: ['inductor', 'parasitics', 'dcr', 'interwinding-capacitance'],
+    difficulty: 'intermediate'
+  },
+  {
+    id: 'pc-034',
+    question: 'What do cores do on inductors? What are typical core materials?',
+    answer: `Cores guide and concentrate magnetic flux to increase inductance and reduce size; also provide mechanical support and thermal mass.
+
+Typical materials: ferrite (MnZn, NiZn), powdered iron, laminated silicon steel, amorphous/nanocrystalline alloys. Choice depends on frequency, flux density, losses, and current handling.`,
+    section: 'passive-components',
+    tags: ['inductor', 'core', 'materials', 'ferrite', 'powder-iron'],
+    difficulty: 'basic'
+  },
+  {
+    id: 'pc-035',
+    question: 'What are the main loss mechanisms of an inductor? Where do they arise from?',
+    answer: `Losses:
+- Copper (I²R): DCR at low f; AC resistance from skin and proximity effects at higher f
+- Core losses: hysteresis (∝ f · B^n), eddy currents (∝ f² · B²)
+- Dielectric and radiation losses (usually minor)
+
+Arise from winding resistance/geometry and magnetic material properties. Minimize via proper wire (e.g., litz), core selection/size, and frequency choices.`,
+    section: 'passive-components',
+    tags: ['inductor', 'losses', 'skin-effect', 'hysteresis', 'eddy-currents'],
+    difficulty: 'intermediate'
+  },
+  {
+    id: 'pc-036',
+    question: 'What is ACR? Where does it arise from and how is it impacted by frequency?',
+    answer: `ACR (AC resistance) is the effective resistance of windings under AC conditions. It exceeds DCR due to:
+- Skin effect: current crowds near conductor surface as frequency rises
+- Proximity effect: nearby conductors alter current distribution
+
+Impact: ACR increases with frequency (often ≈ √f trend for skin; geometry‑dependent). It drives copper loss (P_cu = I_RMS² · ACR) and heating.`,
+    section: 'passive-components',
+    tags: ['inductor', 'acr', 'ac-resistance', 'skin', 'proximity'],
+    difficulty: 'intermediate'
+  },
+  {
+    id: 'pc-037',
+    question: 'What sort of signals can inductors pass through and block? What sort of filter behavior is this?',
+    answer: `Inductors pass low‑frequency (low impedance) and impede high‑frequency (high impedance) content—series use yields low‑pass behavior; shunt to ground yields high‑pass for the load node.`,
+    section: 'passive-components',
+    tags: ['inductor', 'filter', 'lpf', 'hpf'],
+    difficulty: 'basic'
+  },
+  {
+    id: 'pc-038',
+    question: 'Build a LPF/HPF using a single inductor.',
+    answer: `First‑order L filters:
+
+Low‑Pass (series L): input ─ L ─●─ output, node to ground via load R
+High‑Pass (shunt L): input ─●─ output, node to ground via L (load in series)
+
+Cutoff depends on R and L: f_c = R/(2πL) for simple RL forms.`,
+    section: 'passive-components',
+    tags: ['inductor', 'rl', 'lpf', 'hpf'],
+    difficulty: 'basic'
+  },
+  {
+    id: 'pc-039',
+    question: 'What are some common failure modes of an inductor?',
+    answer: `Open circuit (corrosion, broken lead, bad solder joint), shorted turns (insulation failure), overheating (excess copper/core loss), saturation under load, and mechanical damage/potting issues.`,
+    section: 'passive-components',
+    tags: ['inductor', 'failure', 'reliability'],
+    difficulty: 'basic'
   }
 ];
 

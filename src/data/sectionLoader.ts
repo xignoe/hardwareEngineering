@@ -22,6 +22,12 @@ export const availableSections: SectionMetadata[] = [
     questionCount: 6
   },
   {
+    id: 'physics-chemistry',
+    title: 'Physics & Chemistry',
+    description: 'General physics and chemistry topics relevant to hardware (non-device, non-circuit basics).',
+    questionCount: 7
+  },
+  {
     id: 'passive-components',
     title: 'Passive Components',
     description: 'Comprehensive coverage of resistors, capacitors, and inductors including their characteristics, parasitics, and applications.',
@@ -90,6 +96,9 @@ export async function loadSection(sectionId: string): Promise<Section> {
       case 'digital-systems':
         sectionModule = await import('./sections/digital-systems');
         break;
+      case 'physics-chemistry':
+        sectionModule = await import('./sections/physics-chemistry');
+        break;
       
       // Future sections can be added here as needed
       
@@ -104,6 +113,7 @@ export async function loadSection(sectionId: string): Promise<Section> {
                    (sectionModule as any).powerElectronicsSection ||
                    (sectionModule as any).amplifiersOpampsSection ||
                    (sectionModule as any).digitalSystemsSection ||
+                   (sectionModule as any).physicsChemistrySection ||
                    (sectionModule as any).section;
     
     if (!section) {
